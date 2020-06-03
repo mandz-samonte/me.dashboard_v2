@@ -1,0 +1,29 @@
+{
+  "name": "me.dashboard_v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MandzSamonte/me.dashboard_v2.git"
+  },
+  "author": "Mandz Samonte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MandzSamonte/me.dashboard_v2/issues"
+  },
+  "homepage": "https://github.com/MandzSamonte/me.dashboard_v2#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.4"
+  }
+}
