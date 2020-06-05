@@ -11,6 +11,7 @@ import Content from './layout/Content';
 
 import Card from './components/Card';
 import Button from './components/Button';
+import Modal from './components/Modal';
 
 function App() {
   return (
