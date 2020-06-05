@@ -10,6 +10,7 @@ import Sidebar from './layout/Sidebar';
 import Content from './layout/Content';
 
 import Card from './components/Card';
+import Button from './components/Button';
 
 function App() {
   return (
