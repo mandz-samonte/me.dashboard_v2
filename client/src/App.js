@@ -4,10 +4,14 @@ import './App.css';
 
 import {
   BrowserRouter as Router,
+  Switch,
+  Route
 } from 'react-router-dom';
 
 import Sidebar from './layout/Sidebar';
 import Content from './layout/Content';
+
+import HabitTracker from './pages/HabitTracker';
 
 import Card from './components/Card';
 
@@ -24,8 +28,9 @@ function App() {
 
           <div className="flex md:flex-col h-full">
             <div className="w-3/4 md:w-full h-full md:h-2/3 mr-5">
-              <Card.Card className="w-full h-full  shadow-md">
-              </Card.Card>
+              <Switch>
+                <Route exact path="/habit-tracker" component={HabitTracker} />
+              </Switch>
             </div>
 
             <div className="flex flex-col md:flex-row md:w-full md:mt-5 md:h-1/3 w-1/4">

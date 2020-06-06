@@ -1,11 +1,11 @@
 import React from 'react';
 
 function Button(props) {
-  const { className = "", children, onClick } = props;
+  const { className = "", children, onClick, circle = false } = props;
 
   return (
     <button
-      className={`${className} hover:bg-purple-600 py-2 px-4 bg-purple-800 text-white rounded-sm`}
+      className={`${className} ${circle ? 'rounded-full p-2' : 'rounded-sm py-2 px-4' } hover:bg-purple-600 bg-purple-800 text-white`}
       onClick={onClick}
     >
       {children}
