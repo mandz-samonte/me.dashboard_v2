@@ -5,7 +5,7 @@ function Button(props) {
 
   return (
     <button
-      className={`${className} hover:bg-purple-600 py-3 px-5 bg-purple-800 text-white rounded-sm`}
+      className={`${className} hover:bg-purple-600 py-2 px-4 bg-purple-800 text-white rounded-sm`}
       onClick={onClick}
     >
       {children}

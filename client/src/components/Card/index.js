@@ -6,7 +6,7 @@ function Header(props) {
   return (
     <div className={`${className} flex flex-col`}>
       <div className="flex">{ children }</div>
-      <div className="w-full h-2 mt-5 bg-purple-800" />
+      <div className="w-full h-1 mt-5 bg-purple-800" />
     </div>
   )
 }
@@ -26,7 +26,7 @@ function Footer(props) {
 
   return (
     <div className={`${className} flex flex-col mt-auto`}>
-      <div className="w-full h-2 mb-5 bg-purple-800" />
+      <div className="w-full h-1 mb-5 bg-purple-800" />
       <div className="flex">{ children }</div>
     </div>
   )

@@ -393,6 +393,9 @@ module.exports = {
       '0': '0',
       '1': '1',
       '2': '2',
+      '3': '3',
+      '4': '4',
+      '5': '5'
     },
     textColor: theme => theme('colors'),
     textOpacity: theme => theme('opacity'),
