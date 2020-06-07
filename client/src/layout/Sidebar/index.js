@@ -1,25 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Compass, Calendar, CheckSquare } from 'react-feather';
 
 const SIDEBAR_LINKS = [
   {
     title: "Dashboard",
     link: "/",
+    icon: <Compass className="stroke-current text-white" size={35} />
   },
   {
     title: "Habit-Tracker",
-    link: "/habit-tracker"
+    link: "/habit-tracker",
+    icon: <Calendar className="stroke-current text-white" size={35} />
   },
   {
     title: "Todo-List",
-    link: "/todo-list"
+    link: "/todo-list",
+    icon: <CheckSquare className="stroke-current text-white" size={35} />
   }
 ]
 
 function NavbarLink(props) {
+  const { to, icon } = props;
+
   return (
     <Link to={props.to} className="">
-      <div className="bg-purple-700 hover:bg-purple-600 w-20 h-20 shadow-md  rounded-md my-16" />
+      <div className="bg-purple-700 hover:bg-purple-600 w-20 h-20 shadow-md flex items-center justify-center rounded-md my-16">
+        {icon}
+      </div>
     </Link>
   )
 }
@@ -53,6 +61,7 @@ function Sidebar() {
         SIDEBAR_LINKS.map(item => (
           <NavbarLink
             to={item.link}
+            icon={item.icon}
           />
         ))
       }
