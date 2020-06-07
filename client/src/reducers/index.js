@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({
+import HabitTrackerReducer from './HabitTrackerReducer';
 
+export default combineReducers({
+  habits: HabitTrackerReducer
 });

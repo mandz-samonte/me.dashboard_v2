@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Plus } from 'react-feather';
+import { connect } from 'react-redux';
 
 import Card from '../../components/Card';
 import Button from '../../components/Button';
@@ -7,35 +8,6 @@ import Button from '../../components/Button';
 import Habit from './Habit';
 import AddHabitModal from './AddHabitModal';
 
-const SAMPLE_DATA = [
-  {
-    id: 1,
-    title: 'Sample 1',
-    days: [
-      {
-        id: 1,
-        is_done: true,
-        habit_id: 1
-      },
-      {
-        id: 1,
-        is_done: false,
-        habit_id: 1
-      }
-    ]
-  },
-  {
-    id: 2,
-    title: 'Sample 2',
-    days: [
-      {
-        id: 1,
-        is_done: false,
-        habit_id: 2
-      }
-    ]
-  }
-]
 
 class HabitTracker extends Component {
   constructor(props) {
@@ -46,6 +18,8 @@ class HabitTracker extends Component {
   }
 
   render() {
+    const { habits } = this.props;
+
     return (
       <Card.Card className="h-full shadow-md">
         <Card.Header>
@@ -60,7 +34,7 @@ class HabitTracker extends Component {
 
         <Card.Body>
           {
-            SAMPLE_DATA.map(data => (
+            habits.map(data => (
               <Habit
                 key={data.id}
                 days={data.days}
@@ -76,4 +50,10 @@ class HabitTracker extends Component {
   }
 }
 
-export default HabitTracker;
+const mapStateToProps = (state) => ({
+  habits: state.habits.habits,
+})
+
+export default connect(
+  mapStateToProps
+)(HabitTracker);
