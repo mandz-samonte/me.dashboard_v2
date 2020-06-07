@@ -1,0 +1,7 @@
+.checkbox:hover input ~ .checkmark {
+  background-color: #a0aec0;
+}
+
+.checkbox input:checked ~ .checkmark {
+  background-color: #6b46c1;
+}
