@@ -4,9 +4,9 @@ function Header(props) {
   const { className = "", children } = props;
 
   return (
-    <div className={`${className} flex flex-col`}>
+    <div className={`${className} flex flex-col justify-center`}>
       <div className="flex">{ children }</div>
-      <div className="w-full h-1 mt-5 bg-purple-800" />
+      <div className="w-full h-1 mt-3 bg-purple-800" />
     </div>
   )
 }
@@ -26,7 +26,7 @@ function Footer(props) {
 
   return (
     <div className={`${className} flex flex-col mt-auto`}>
-      <div className="w-full h-1 mb-5 bg-purple-800" />
+      <div className="w-full h-1 mb-3 bg-purple-800" />
       <div className="flex">{ children }</div>
     </div>
   )

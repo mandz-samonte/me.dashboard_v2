@@ -10,7 +10,7 @@ function Input(props) {
   } = props;
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-2">
       <label className="mb-1 ml-1">{ label }</label>
       <input
         className={`${className} py-2 px-4 text-gray-700 rounded border border-gray-400`}
