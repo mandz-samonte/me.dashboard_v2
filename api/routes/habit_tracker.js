@@ -3,16 +3,80 @@ const db = require('../../db');
 
 const router = express.Router();
 
-// QUERIES
-const GET_ALL_HABITS = 'SELECT * FROM habit_tracker_habits';
-const GET_DAYS = 'SELECT * FROM habit_tracker_days WHERE habit_id = ?';
-const ADD_HABIT = 'INSERT INTO habit_tracker_habits SET ?';
-const ADD_DAYS = 'INSER INTO habit_tracker_days SET ?';
-const UPDATE_DAY = 'UPDATE habit_tracker_days SET is_done = ? WHERE id = ? AND habit_id = ?';
-const DELETE_HABIT = 'DELETE FROM habit_tracker_habits WHERE id = ?';
+const query = require('../query/query_habit_tracker');
 
-router.get('/', (req, res) => {
-  db.query(GET_ALL_HABITS, (error, results) => {
-    ge
+router.get('/', async (req, res) => {
+  let habits = await query.getAllHabits();
+  let days = await query.getAllDays();
+
+  let modifiedHabits = habits.map(habit => {
+    let modifiedHabit = { ...habit, days: [] };
+
+    days.map(day => {
+      if(habit.id === day.habit_id) modifiedHabit.days.push(day);
+    })
+
+    return modifiedHabit;
+  });
+
+  return res.json({
+    data: modifiedHabits,
   })
 })
+
+router.post('/', async (req, res) => {
+  let { title, days } = req.body;
+
+  try {
+    let newHabit = await query.addHabit(title);
+    let newDays = await query.addDays(days, newHabit.insertId);
+
+    return res.json({
+      data: req.body
+    })
+  } catch(err) {
+    console.log(err);
+
+    return res.json({
+      message: err
+    })
+  }
+})
+
+router.put('/', async (req, res) => {
+  let { id, is_done, habit_id } = req.body;
+
+  try {
+    let updatedHabit = await query.updateDays(id, is_done, habit_id);
+
+    return res.json({
+      data: req.body,
+      message: 'Days has been updated...'
+    })
+  } catch (err) {
+    return res.json({
+      message: 'Oops! Something went wrong...'
+    })
+  }
+})
+
+router.delete('/:id', async (req, res) => {
+  let { id } = req.params;
+
+  try {
+    let deletedHabit = await query.deleteHabit(id);
+
+    return res.json({
+      data: deletedHabit,
+      message: 'Habit has beed deleted...'
+    })
+  } catch (err) {
+    return res.json({
+      error: err,
+      message: 'Oops! Something went wrong'
+    })
+  }
+})
+
+
+module.exports = router;

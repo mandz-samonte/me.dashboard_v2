@@ -8,6 +8,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Route
+const habit_tracker = require('./api/routes/habit_tracker');
 
 
 // Applying Middleware
@@ -21,6 +22,7 @@ db.connect((err) => {
 })
 
 // Applying routes
+app.use('/api/habit-tracker', habit_tracker);
 
 
 // Running SERVER
