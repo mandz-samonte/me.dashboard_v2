@@ -42,7 +42,10 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_HABIT:
-      return state;
+      return {
+        ...state,
+        habits: action.payload
+      };
     case UPDATE_HABIT:
       return {
         ...state,

@@ -12,7 +12,6 @@ function Modal(props) {
     action,
     children,
     onClose,
-    onClick
   } = props;
 
   return (

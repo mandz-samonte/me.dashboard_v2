@@ -25,6 +25,7 @@
     "build:css": "postcss src/assets/tailwind.css -o src/assets/tailwind.main.css",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/tailwind.main.css"
   },
+  "proxy": "http://localhost:5000/",
   "eslintConfig": {
     "extends": "react-app"
   },

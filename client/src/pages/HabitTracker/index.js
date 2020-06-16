@@ -8,6 +8,7 @@ import Button from '../../components/Button';
 import Habit from './Habit';
 import AddHabitModal from './AddHabitModal';
 
+import { getAllHabits, addHabit } from '../../actions/HabitTrackerAction';
 
 class HabitTracker extends Component {
   constructor(props) {
@@ -15,6 +16,10 @@ class HabitTracker extends Component {
     this.state = {
       isModalOpen: false,
     }
+  }
+
+  componentWillMount() {
+    this.props.getAllHabits();
   }
 
   render() {
@@ -44,7 +49,14 @@ class HabitTracker extends Component {
           }
         </Card.Body>
 
-        {this.state.isModalOpen && <AddHabitModal onClose={() => this.setState({ isModalOpen: false })} />}
+        {
+          this.state.isModalOpen
+          &&
+          <AddHabitModal
+            onClose={() => this.setState({ isModalOpen: false })}
+            onAdd={this.props.addHabit}
+          />
+        }
       </Card.Card>
     )
   }
@@ -55,5 +67,9 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  {
+    getAllHabits,
+    addHabit
+  }
 )(HabitTracker);

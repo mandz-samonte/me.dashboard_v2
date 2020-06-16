@@ -14,7 +14,7 @@ export function update(id, params) {
   return axios.put(`${MODULE_PREFIXES}/${id}`, params);
 }
 
-export function delete(id, params) {
+export function remove(id, params) {
   return axios.delete(`${MODULE_PREFIXES}/${id}`, params);
 }
 
@@ -22,5 +22,5 @@ export default {
   index,
   add,
   update,
-  delete
+  remove
 }
