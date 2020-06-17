@@ -3,8 +3,6 @@ import React from 'react';
 function Tooltip(props) {
   const { children, message } = props;
 
-
-
   return (
     <div className="group relative flex items-center">
       { children }

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Tooltip from '../../components/Tooltip';
+import Settings from '../../components/Settings';
 
 import Habit from './Habit';
 import AddHabitModal from './AddHabitModal';
@@ -29,15 +30,13 @@ class HabitTracker extends Component {
     return (
       <Card.Card className="h-full shadow-md">
         <Card.Header>
-          <Tooltip message="Sample">
-            <Button
-              className="p-2 ml-auto"
-              circle
-              onClick={() => this.setState({ isModalOpen: true })}
-            >
-              <Plus className="" />
-            </Button>
-          </Tooltip>
+          <Button
+            className="p-2 ml-auto"
+            circle
+            onClick={() => this.setState({ isModalOpen: true })}
+          >
+            <Plus className="" />
+          </Button>
         </Card.Header>
 
         <Card.Body>
