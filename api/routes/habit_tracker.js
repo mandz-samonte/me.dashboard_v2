@@ -32,7 +32,10 @@ router.post('/', async (req, res) => {
     let newDays = await query.addDays(days, newHabit.insertId);
 
     return res.json({
-      data: req.body,
+      data: {
+        ...req.body,
+        id: newHabit.insertId
+      },
       message: "Habit has been created..."
     })
   } catch(err) {

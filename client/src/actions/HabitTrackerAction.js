@@ -19,10 +19,12 @@ export const updateHabit = (props) => dispatch => {
   console.log(props);
 }
 
-export const deleteHabit = (props) => dispatch => {
-  dispatch({
-    type: DELETE_HABIT,
-    payload: props
+export const deleteHabit = (id) => dispatch => {
+  apiHabitTracker.remove(id).then(({data}) => {
+    dispatch({
+      type: DELETE_HABIT,
+      payload: id
+    })
   })
 }
 
@@ -42,6 +44,9 @@ export const addHabit = (props) => dispatch => {
   }
 
   apiHabitTracker.add(formData).then(({data}) => {
-    console.log(data.data)
+    dispatch({
+      type: ADD_HABIT,
+      payload: data.data
+    })
   })
 }

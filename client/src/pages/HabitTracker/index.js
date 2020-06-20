@@ -10,7 +10,11 @@ import Settings from '../../components/Settings';
 import Habit from './Habit';
 import AddHabitModal from './AddHabitModal';
 
-import { getAllHabits, addHabit } from '../../actions/HabitTrackerAction';
+import {
+  getAllHabits,
+  addHabit,
+  deleteHabit,
+} from '../../actions/HabitTrackerAction';
 
 class HabitTracker extends Component {
   constructor(props) {
@@ -44,8 +48,8 @@ class HabitTracker extends Component {
             habits.map(data => (
               <Habit
                 key={data.id}
-                days={data.days}
-                title={data.title}
+                data={data}
+                onDelete={this.props.deleteHabit}
               />
             ))
           }
@@ -72,6 +76,7 @@ export default connect(
   mapStateToProps,
   {
     getAllHabits,
-    addHabit
+    addHabit,
+    deleteHabit
   }
 )(HabitTracker);

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Settings from '../../components/Settings';
+
 function Checkbox(props) {
   const { checked = false, onChange } = props;
 
@@ -15,16 +17,30 @@ function Checkbox(props) {
   )
 }
 
-function Habit(props) {
-  const { title = "Sample", days = [], onChange,  } = props;
+function HabitSettings(props) {
+  const { onDelete } = props;
 
   return (
-    <div className="p-2">
-      <label>{ title }</label>
+    <Settings>
+      <p onClick={onDelete} className="hover:text-gray-700 cursor-pointer">Delete</p>
+    </Settings>
+  )
+}
+
+function Habit(props) {
+  const { data, onChange, onDelete } = props;
+
+  return (
+    <div className="py-2 px-5">
+      <div className="flex items-center justify-between mb-2">
+        <h1 className="font-bold">{ data.title }</h1>
+        <HabitSettings onDelete={() => onDelete(data.id)} />
+      </div>
+
 
       <div className="flex flex-wrap">
       {
-        days.map((day, key) => (
+        data.days.map((day, key) => (
           <Checkbox
             key={key}
             checked={day.is_done}
